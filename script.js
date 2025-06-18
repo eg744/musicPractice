@@ -33,25 +33,15 @@ const scalesWithFlats = ['F', 'Bb', 'Eb', 'Eb'];
 const majorSteps = [2, 2, 1, 2, 2, 2, 1];
 
 function getMajorScale(root) {
-	// Chromatic scale with enharmonic spelling options
-	// const chromatic = [
-	// 	'C',
-	// 	'C#',
-	// 	'D',
-	// 	'D#',
-	// 	'E',
-	// 	'F',
-	// 	'F#',
-	// 	'G',
-	// 	'G#',
-	// 	'A',
-	// 	'A#',
-	// 	'B',
-	// 	'B#',
-	// 	'C',
-	// ];
+	//Major scale pattern
+	// I     - Major
+	// ii    - Minor
+	// iii   - Minor
+	// IV    - Major
+	// V     - Major
+	// vi    - Minor
+	// vii°  - Diminished
 
-	// const majorSteps = [2, 2, 1, 2, 2, 2, 1];
 	const letters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 	const rootIndex = chromatic.indexOf(root);
@@ -87,27 +77,67 @@ function getMajorScale(root) {
 }
 
 function getBaseMajorChordsInKey(key) {
-	const majorChordPattern = [0, 4, 3];
+	const majorChordPattern = [0, 4, 7];
 	const scale = getMajorScale(key);
 
 	let chordsArray = [];
 
 	for (let i = 0; i < scale.length - 1; i++) {
-		for (let n in chromatic) {
-			if (chromatic[n] == scale[i]) {
-				console.log('chromaticn', chromatic[n]);
-			}
-			// console.log(n);
-		}
+		let rootNote = scale[i];
+		let rootIndexInChromatic = chromatic.findIndex((n) => n === rootNote);
 		let notesInChord = [];
+
+		for (let j = 0; j < majorChordPattern.length; j++) {
+			const noteIndex =
+				(rootIndexInChromatic + majorChordPattern[j]) %
+				chromatic.length;
+			const chordNote = chromatic[noteIndex];
+			notesInChord.push(chordNote);
+		}
 
 		chordsArray.push(notesInChord);
 	}
 	return chordsArray;
 }
 
-console.log('majorscale', getMajorScale('B'));
-console.log(getBaseMajorChordsInKey('B'));
+function getMinorTriadsInKey(key) {
+	const scale = getMajorScale(key);
+	const minorTriadIndices = [1, 2, 5]; // ii, iii, vi in major scale
+
+	const minorChords = [];
+
+	for (let i of minorTriadIndices) {
+		const root = scale[i % 7];
+		const third = scale[(i + 2) % 7];
+		const fifth = scale[(i + 4) % 7];
+
+		minorChords.push([root, third, fifth]);
+	}
+
+	return minorChords;
+}
+
+function getDiatonicSeventhChords(key) {
+	// major, minor, minor, major, dominant, minor, half-diminished
+	const scale = getMajorScale(key);
+	const seventhChords = [];
+
+	for (let i = 0; i < 7; i++) {
+		const root = scale[i % 7];
+		const third = scale[(i + 2) % 7];
+		const fifth = scale[(i + 4) % 7];
+		const seventh = scale[(i + 6) % 7];
+
+		seventhChords.push([root, third, fifth, seventh]);
+	}
+
+	return seventhChords;
+}
+
+console.log('majorscale', getMajorScale('C'));
+console.log('majorchords', getBaseMajorChordsInKey('C'));
+console.log('minortriads', getMinorTriadsInKey('C'));
+console.log('seventhchords', getDiatonicSeventhChords('C'));
 
 function getNotesInKey(key) {
 	let arrayNotes = [];
