@@ -139,45 +139,84 @@ console.log('majorchords', getBaseMajorChordsInKey('C'));
 console.log('minortriads', getMinorTriadsInKey('C'));
 console.log('seventhchords', getDiatonicSeventhChords('C'));
 
-function getNotesInKey(key) {
-	let arrayNotes = [];
-	for (let note in allNotesNatural) {
-		let keyindex = 1;
+// function highlightChord() {
+// 	const key = document.getElementById('keySelect').value;
+// 	const chordType = document.getElementById('chordSelect').value;
+// 	const formula = chordFormulas[chordType];
 
-		if (allNotesNatural[note] == key) {
-			for (let i = note; i <= NUMNOTES; i++) {
-				if (allNotesNatural[i] != undefined) {
-					// objectNotes.set(keyindex, allNotesNatural[i]);
-					// keyindex++;
-					// console.log(allNotesNatural[i]);
-					arrayNotes += allNotesNatural[i];
-				}
-				if (i > allNotesNatural.length) {
-					let elemsAtStart =
-						(NUMNOTES - allNotesNatural.length - note - 2) * -1;
+// 	const rootIndex = chromatic.indexOf(key);
+// 	if (rootIndex === -1) return;
 
-					for (let j = 0; j < elemsAtStart; j++) {
-						// objectNotes.set(keyindex, allNotesNatural[j]);
-						// keyindex++;
-						arrayNotes += allNotesNatural[j];
-					}
-				}
-			}
+// 	const chordNotes = formula.map(
+// 		(interval) => chromatic[(rootIndex + interval) % chromatic.length]
+// 	);
+
+// 	document.querySelectorAll('.key').forEach((el) => {
+// 		const note = el.dataset.note;
+// 		if (chordNotes.includes(note)) {
+// 			el.style.backgroundColor = 'yellow';
+// 		} else {
+// 			el.style.backgroundColor = el.classList.contains('white')
+// 				? 'white'
+// 				: 'black';
+// 		}
+// 	});
+// }
+
+const chromaticForDisplay = [
+	'C',
+	'C#',
+	'D',
+	'D#',
+	'E',
+	'F',
+	'F#',
+	'G',
+	'G#',
+	'A',
+	'A#',
+	'B',
+];
+
+const chordFormulas = {
+	major: [0, 4, 7],
+	minor: [0, 3, 7],
+	diminished: [0, 3, 6],
+	maj7: [0, 4, 7, 11],
+	min7: [0, 3, 7, 10],
+	dom7: [0, 4, 7, 10],
+};
+
+function highlightChord() {
+	const key = document.getElementById('keySelect').value;
+	const chordType = document.getElementById('chordSelect').value;
+	const formula = chordFormulas[chordType];
+
+	const rootIndex = chromaticForDisplay.indexOf(key);
+	if (rootIndex === -1) return;
+
+	// Calculate the chord notes
+	const chordNotes = formula.map(
+		(interval) =>
+			chromaticForDisplay[
+				(rootIndex + interval) % chromaticForDisplay.length
+			]
+	);
+
+	// Reset all key styles
+	document.querySelectorAll('.key').forEach((element) => {
+		const isWhite = element.classList.contains('white');
+		element.style.backgroundColor = isWhite ? 'white' : 'black';
+	});
+
+	// Highlight the chord notes
+	document.querySelectorAll('.key').forEach((element) => {
+		if (chordNotes.includes(element.dataset.note)) {
+			element.style.backgroundColor = 'red';
 		}
-	}
-	return arrayNotes;
-	// return objectNotes;
+	});
 }
-// const myNotes = getNotesInKey('C');
-// console.log(myNotes);
-
-function getMajor(arrayNotes) {
-	// let LLNotes = new Linkedlist();
-	for (let note in arrayNotes) {
-		let n = parseInt(note) + 1;
-
-		// mapNotes.set(n, arrayNotes[note]);
-		// console.log(arrayNotes[note]);
-	}
-	// return mapNotes;
-}
+const highlightBtn = document.getElementById('highlight');
+highlightBtn.addEventListener('click', (e) => {
+	highlightChord();
+});

@@ -5,3 +5,51 @@
 .text {
 	color: white;
 }
+
+.piano {
+	position: relative;
+	width: fit-content;
+	height: 10em;
+	display: flex;
+	font-size: 1em; /* Base size */
+}
+
+.key {
+	border: 0.05em solid #000;
+	display: inline-block;
+	position: relative;
+}
+
+.white {
+	width: 2.5em;
+	height: 10em;
+	background: white;
+	z-index: 1;
+	border-radius: 0px 0px 10px 10px;
+}
+
+.black {
+	width: 1.5em;
+	height: 6em;
+	background: black;
+	position: absolute;
+	z-index: 2;
+	border-radius: 0px 0px 10px 10px;
+}
+
+/* Position black keys with relative left offsets */
+.key.black[data-note='C#'] {
+	left: 1.8em;
+}
+.key.black[data-note='D#'] {
+	left: 4.3em;
+}
+.key.black[data-note='F#'] {
+	left: 9.5em;
+}
+.key.black[data-note='G#'] {
+	left: 12.2em;
+}
+.key.black[data-note='A#'] {
+	left: 14.8em;
+}
