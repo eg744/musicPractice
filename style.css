@@ -1,3 +1,54 @@
+/* Base mobile-first styling */
+body {
+	margin: 0;
+	padding: 1em;
+	background-color: #000;
+	color: #fff;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	/* overflow-x: hidden;  */
+}
+
+/* Ensure containers wrap nicely */
+.fretboard-container {
+	width: 100%;
+	max-width: 100vw;
+	overflow-x: auto;
+}
+
+.fretboard {
+	width: 100%;
+	max-width: 100%;
+	aspect-ratio: 6 / 5;
+}
+
+/* Make grid scale with screen size */
+.fretboard,
+.fretboard-wrapper,
+#fretboard-overlay {
+	width: 100%;
+	max-width: 360px;
+	height: auto;
+}
+
+/* Adjust dropdown and text areas */
+select,
+textarea,
+input {
+	max-width: 100%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Scale down font on smaller screens */
+@media (max-width: 500px) {
+	body {
+		font-size: 0.3em;
+	}
+}
 /* .page-content {
 	display: flex;
 	margin: 0;
@@ -328,3 +379,5 @@ body {
 .githubLink {
 	font-size: 0.8em;
 }
+
+/* RESPONSIVE */
