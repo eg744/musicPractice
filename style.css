@@ -1,10 +1,31 @@
-.pageTopLevel {
-	background-color: #000;
+/* .page-content {
+	display: flex;
+	margin: 0;
+	height: 100vh;
+	justify-content: space-evenly;
+	align-items: flex-start;
+} */
+body {
+	background-color: black;
+	color: white;
+	font-family: sans-serif;
+	/* margin: 0; */
+	height: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .text {
 	color: white;
 }
+
+.instruments {
+	display: flex;
+	align-items: flex-end;
+}
+
+/* ==PIANO== */
 
 .piano {
 	position: relative;
@@ -83,6 +104,150 @@
 #keyboard-chord-select button {
 	cursor: pointer;
 	transition: background-color 0.3s;
+}
+
+/* ==Guitar== */
+/* #guitar {
+	margin-top: 3em;
+	display: flex;
+	justify-content: center;
+} */
+
+/* .fretboard {
+	position: relative;
+	width: 300px;
+	height: 200px;
+	border: 2px solid #555;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #222;
+}
+
+.string {
+	height: 2px;
+	background: #ccc;
+	position: relative;
+}
+
+.fretboard::before,
+.fretboard::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: #555;
+}
+
+.fretboard::before {
+	left: 20%;
+}
+.fretboard::after {
+	left: 40%;
+}
+
+.fret-marker {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: yellow;
+	transform: translate(-50%, -50%);
+} */
+
+.fretboard-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	font-family: sans-serif;
+	padding: 1em;
+}
+
+.string-indicators {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	width: 240px;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.fretboard-wrapper {
+	display: flex;
+}
+
+.fret-numbers {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: 6px;
+	height: 300px;
+}
+
+.fret-numbers div {
+	height: calc(300px / 5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8em;
+	color: #ccc;
+}
+/* ======== */
+.fretboard {
+	position: relative;
+	width: 240px;
+	height: 300px;
+	border: 2px solid #555;
+	background: #1a1a1a;
+	display: grid;
+	grid-template-rows: repeat(5, 1fr);
+	grid-template-columns: repeat(6, 1fr);
+	gap: 1px;
+	margin-top: 1em;
+}
+
+.fret {
+	border-bottom: 1px solid #555;
+	border-right: 1px solid #444;
+}
+
+#fretboard-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.fret-marker {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: yellow;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+/* ///////////// */
+
+#guitar-chord-selector {
+	background-color: #1a1a1a;
+	color: white;
+	border: 1px solid #444;
+	border-radius: 0.5em;
+	padding: 1.5em;
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	max-width: 600px;
+}
+
+#guitar-chord-selector select {
+	background-color: #333;
+	color: white;
+	border: 1px solid #555;
 }
 
 .hoverable:hover {

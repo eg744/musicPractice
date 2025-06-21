@@ -222,6 +222,84 @@ highlightBtn.addEventListener('click', (e) => {
 	highlightChord();
 });
 
+// ==HIGHLIGHT GUITAR==
+
+const guitarChords = {
+	C: ['x', 3, 2, 0, 1, 0],
+	G: [3, 2, 0, 0, 0, 3],
+	D: ['x', 'x', 0, 2, 3, 2],
+	Em: [0, 2, 2, 0, 0, 0],
+	Am: ['x', 0, 2, 2, 1, 0],
+	F: [1, 3, 3, 2, 1, 1],
+};
+
+// function displayGuitarChord() {
+// 	const chordName = document.getElementById('guitarChordSelect').value;
+// 	const frets = guitarChords[chordName];
+// 	if (!frets) return;
+
+// 	const strings = document.querySelectorAll('.fretboard .string');
+
+// 	strings.forEach((string, index) => {
+// 		string.innerHTML = ''; // Clear previous markers
+// 		const fret = frets[index];
+
+// 		if (fret === 'x') {
+// 			// Optional: Add mute mark (X)
+// 		} else if (fret !== undefined) {
+// 			const dot = document.createElement('div');
+// 			dot.classList.add('fret-marker');
+// 			dot.style.left = `${(fret + 0.5) * 20}%`; // crude positioning
+// 			string.appendChild(dot);
+// 		}
+// 	});
+// }
+
+// Dynamically build 5 rows x 6 columns = 30 fret boxes
+function buildFretboardGrid() {
+	const fretboard = document.getElementById('fretboard');
+
+	for (let i = 0; i < 30; i++) {
+		const fret = document.createElement('div');
+		fret.classList.add('fret');
+		fretboard.appendChild(fret);
+	}
+}
+
+// Run on page load
+buildFretboardGrid();
+
+function displayGuitarChord() {
+	const chordName = document.getElementById('guitarChordSelect').value;
+	const frets = guitarChords[chordName];
+	const overlay = document.getElementById('fretboard-overlay');
+	overlay.innerHTML = '';
+
+	if (!frets) return;
+
+	frets.forEach((fret, stringIndex) => {
+		if (fret === 'x' || fret === 0) return; // skip open or muted
+		const dot = document.createElement('div');
+		dot.classList.add('fret-marker');
+
+		// Positioning: horizontal by string (6 strings), vertical by fret (5 frets)
+		const stringPct = (stringIndex + 0.5) * (100 / 6);
+		const fretPct = (fret - 0.5) * (100 / 5); // shift down half a fret for visual
+
+		dot.style.left = `${stringPct}%`;
+		dot.style.top = `${fretPct}%`;
+
+		overlay.appendChild(dot);
+	});
+}
+
+const guitarSelect = document.getElementById('guitarChordSelect');
+guitarSelect.addEventListener('change', (e) => {
+	displayGuitarChord();
+});
+
+// highlightGuitarChord(['x', 3, 2, 0, 1, 0]); // EADGBE
+
 // ==CHORD TRANSPOSE==
 
 function transposeChords() {
