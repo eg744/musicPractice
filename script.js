@@ -1,4 +1,4 @@
-import { LinkedList } from '/modules/Linkedlist.js';
+// import { LinkedList } from '/modules/Linkedlist.js';
 
 // let list = new LinkedList();
 // list.add(1);
