@@ -48,6 +48,31 @@ input {
 	body {
 		font-size: 0.3em;
 	}
+	h1 {
+		font-size: 1rem;
+	}
+	.fretboard {
+		max-width: 90vw; /* Fit within 90% of screen width */
+		aspect-ratio: 6 / 5;
+	}
+
+	.string-indicators {
+		max-width: 90vw;
+		font-size: 0.9em;
+	}
+
+	.fretboard-container {
+		padding: 0 1em;
+	}
+
+	.fret-numbers div {
+		font-size: 0.75em;
+	}
+
+	.fret-marker {
+		width: 1em;
+		height: 1em;
+	}
 }
 /* .page-content {
 	display: flex;
