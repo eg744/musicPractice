@@ -178,6 +178,7 @@ const chromaticForDisplay = [
 	'B',
 ];
 
+// ==HIGHLIGHTING FOR KEYBOARD==
 const chordFormulas = {
 	major: [0, 4, 7],
 	minor: [0, 3, 7],
@@ -219,4 +220,43 @@ function highlightChord() {
 const highlightBtn = document.getElementById('highlight');
 highlightBtn.addEventListener('click', (e) => {
 	highlightChord();
+});
+
+// ==CHORD TRANSPOSE==
+
+function transposeChords() {
+	const input = document
+		.getElementById('chordInput')
+		.value.toUpperCase()
+		.trim();
+
+	// .value.toUpperCase()
+	// .trim();
+	const interval = parseInt(document.getElementById('transposeAmount').value);
+	const chords = input.split(/\s+/);
+
+	const transposed = chords.map((chord) => {
+		// separate root and suffix
+		const match = chord.match(/^([A-G][b#]?)(.*)$/);
+
+		// Default
+		if (!match) return chord;
+
+		const [_, root, suffix] = match;
+		let index = chromatic.indexOf(root);
+
+		// unknown root
+		if (index === -1) return chord;
+
+		let transposedRoot =
+			chromatic[(index + interval + chromatic.length) % chromatic.length];
+		return transposedRoot + suffix;
+	});
+
+	document.getElementById('transposedChords').innerText =
+		transposed.join(' ');
+}
+const transposeBtn = document.getElementById('transpose');
+transposeBtn.addEventListener('click', (e) => {
+	transposeChords();
 });

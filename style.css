@@ -53,3 +53,109 @@
 .key.black[data-note='A#'] {
 	left: 14.8em;
 }
+
+#keyboard-chord-select {
+	background-color: #1a1a1a;
+	color: white;
+	border: 1px solid #444;
+	border-radius: 0.5em;
+	padding: 1.5em;
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	max-width: 600px;
+}
+#keyboard-chord-select select,
+#keyboard-chord-select button {
+	font-size: 1em;
+	padding: 0.5em;
+	border-radius: 0.3em;
+	border: none;
+	outline: none;
+}
+
+#keyboard-chord-select select {
+	background-color: #333;
+	color: white;
+	border: 1px solid #555;
+}
+#keyboard-chord-select button {
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.hoverable:hover {
+	background-color: #45a049;
+}
+
+/* Transpose */
+
+/* .chord-transposer {
+	display: flex;
+	justify-items: center;
+	background-color: white;
+}
+
+.chord-transposer-title {
+	background-color: white;
+}
+.transposeResult {
+	/* background-color: white; */
+/* }  */
+
+#chord-transposer {
+	background-color: #1a1a1a;
+	color: white;
+	border: 1px solid #444;
+	border-radius: 0.5em;
+	padding: 1.5em;
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	max-width: 600px;
+}
+
+#chord-transposer textarea,
+#chord-transposer select,
+#chord-transposer button {
+	font-size: 1em;
+	padding: 0.5em;
+	border-radius: 0.3em;
+	border: none;
+	outline: none;
+}
+
+#chord-transposer textarea {
+	resize: vertical;
+	background-color: #333;
+	color: white;
+	border: 1px solid #555;
+}
+
+#chord-transposer select {
+	background-color: #333;
+	color: white;
+	border: 1px solid #555;
+}
+
+#chord-transposer button {
+	/* background-color: #4caf50; */
+	/* color: white; */
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+/* #chord-transposer button:hover {
+	background-color: #45a049;
+} */
+
+#transposedChords {
+	background-color: #222;
+	padding: 0.5em;
+	border-radius: 0.3em;
+	font-weight: bold;
+	/* color: #0f0; */
+	white-space: pre-wrap;
+}
