@@ -324,3 +324,7 @@ body {
 	/* color: #0f0; */
 	white-space: pre-wrap;
 }
+
+.githubLink {
+	font-size: 0.8em;
+}
