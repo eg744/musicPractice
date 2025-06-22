@@ -11,6 +11,9 @@ body {
 	box-sizing: border-box;
 	/* overflow-x: hidden;  */
 }
+h1 {
+	font-size: 2em;
+}
 
 /* Ensure containers wrap nicely */
 .fretboard-container {
@@ -46,13 +49,12 @@ input {
 /* Scale down font on smaller screens */
 @media (max-width: 500px) {
 	body {
-		font-size: 0.3em;
+		font-size: 0.5em;
 	}
 	h1 {
 		font-size: 1rem;
 	}
 	.fretboard {
-		max-width: 90vw; /* Fit within 90% of screen width */
 		aspect-ratio: 6 / 5;
 	}
 
@@ -62,7 +64,9 @@ input {
 	}
 
 	.fretboard-container {
-		padding: 0 1em;
+		/* padding: 0 1em; */
+		/* max-width: 40vw; */
+		max-height: 40vh;
 	}
 
 	.fret-numbers div {
@@ -300,6 +304,7 @@ body {
 	position: absolute;
 	width: 16px;
 	height: 16px;
+	margin-left: 1.3rem;
 	background: yellow;
 	border-radius: 50%;
 	transform: translate(-50%, -50%);

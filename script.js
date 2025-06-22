@@ -259,7 +259,7 @@ const guitarChords = {
 function buildFretboardGrid() {
 	const fretboard = document.getElementById('fretboard');
 
-	for (let i = 0; i < 30; i++) {
+	for (let i = 0; i < 15; i++) {
 		const fret = document.createElement('div');
 		fret.classList.add('fret');
 		fretboard.appendChild(fret);
