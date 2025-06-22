@@ -1,5 +1,12 @@
 /* Base mobile-first styling */
-body {
+
+html {
+	box-sizing: border-box;
+	width: 100vw;
+	/* overflow-x: hidden; */
+}
+
+/* body {
 	margin: 0;
 	padding: 1em;
 	background-color: #000;
@@ -10,6 +17,19 @@ body {
 	align-items: center;
 	box-sizing: border-box;
 	/* overflow-x: hidden;  */
+
+body {
+	margin: 0;
+	/* padding: 1em; */
+	background: #000;
+	color: #fff;
+	font-family: sans-serif;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	/* overflow-x: hidden; */
 }
 h1 {
 	font-size: 2em;
@@ -46,11 +66,64 @@ input {
 	box-sizing: border-box;
 }
 
+@media (max-width: 400px) {
+	.instruments {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.piano {
+		right: 50px;
+	}
+	.fretboard {
+		max-width: 90vw;
+		aspect-ratio: 6 / 5;
+	}
+
+	.string-indicators {
+		max-width: 95vw;
+		font-size: 0.8em;
+	}
+
+	.fret-marker {
+		width: 0.9em;
+		height: 0.9em;
+	}
+
+	.fret-numbers div {
+		font-size: 0.65em;
+	}
+
+	select,
+	input,
+	button {
+		font-size: 0.9em;
+		padding: 0.5em;
+	}
+
+	body {
+		font-size: 2em;
+		padding: 0;
+	}
+
+	.chord-transposer,
+	.keyboard-container,
+	.fretboard-container {
+		width: 100%;
+		max-width: 100%;
+		padding: 0.5em;
+		overflow-x: auto;
+	}
+
+	.scroll-wrap {
+		overflow-x: auto;
+	}
+}
+
 /* Scale down font on smaller screens */
 @media (max-width: 600px) {
 	body {
 		font-size: 0.5em;
-		padding-left: 1.3em;
+		padding-left: 1em;
 	}
 	h1 {
 		font-size: 1rem;
@@ -79,6 +152,7 @@ input {
 		height: 1em;
 	}
 }
+
 /* .page-content {
 	display: flex;
 	margin: 0;
