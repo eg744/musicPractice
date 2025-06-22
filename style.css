@@ -47,9 +47,10 @@ input {
 }
 
 /* Scale down font on smaller screens */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 	body {
 		font-size: 0.5em;
+		padding-left: 1.3em;
 	}
 	h1 {
 		font-size: 1rem;
